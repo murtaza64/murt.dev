@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html color-mode="dark">
+<html>
     <head>
         <link rel="stylesheet" href="main.css"/>
         <title>
@@ -10,25 +10,51 @@
     <body>
         <div id="content">
             <button id="toggle-light" class="js-disabled-hide light-hide">
-                &#xf185 light theme
+                <!--&#xf185 -->light theme
             </button>
             <button id="toggle-dark" class="js-disabled-hide dark-hide">
-                &#xf186 dark theme
+                <!--&#xf186 -->dark theme
             </button>
-            Hello world!
-            <h1>murt.dev</h1>
-            welcome to my <a>website</a>.
-            here is <span class="text-color-2">another highlight color</span> 
-            and here is <span class="text-color-3">yet another.</span>
+            <h1><span class="text-color-1">murt</span>.dev</h1>
+            <div class="flex-panel">
+                <img src="images/dp.png" id="profile-pic" width="100px">
+                <div>
+                <p>My name is Murtaza Javaid. I am a programmer currently studying Computer Science at Yale.
+                I am particularly interested in game AI as well as low level stuff like compilers and operating systems.</p>
+                </div>
+            </div>
+            <p>This website is under construction, but soon I will post blog posts about projects
+                and other interesting things here. </p>
+            <p>For now, you can find my links and contact info here.</p>
             <br><br>
-            <div class="surface-2" style="padding:8px;">
-                <a>surface-2</a>. here is <span class="text-color-2">another highlight color</span> 
-                and here is <span class="text-color-3">yet another.</span>
+            <div id="my-links" class="panel surface-1">
+                <h2>Links</h2>
+                <ul class="flat-list">
+                    <a href="https://github.com/murtaza64" target="_blank"><li>
+                        github
+                    </li></a>
+                    <a href="files/resume.pdf" target="_blank"><li>
+                        cv/resume
+                    </li></a>
+                    <a href="https://www.youtube.com/user/murtaza6464/videos" target="_blank"><li>
+                        youtube
+                    </li></a>
+                    <a href="https://marketplace.visualstudio.com/items?itemName=murtaza64.monokai-vapor" target="_blank"><li>
+                        my vscode color theme
+                    </li></a>
+                </ul>
             </div>
             <br>
-            <div class="surface-3" style="padding: 8px;">
-                <a>surface-3</a>. here is <span class="text-color-2">another highlight color</span> 
-                and here is <span class="text-color-3">yet another.</span>
+            <div id="contact-info" class="panel surface-1">
+                <h2>Contact</h2>
+                <ul class="flat-list dictionary">
+                    <li>
+                        <div class="key">email</div><a href="mailto:murtaza.javaid@gmail.com"><div class="val">murtaza.javaid@gmail.com</div></a>
+                    </li>
+                    <li>
+                        <div class="key">discord</div><a href="https://discordapp.com/users/murtaza64#4933"><div class="val">@murtaza64#4933</div></a>
+                    </li>
+                </ul>
             </div>
         </div>
         <script src="onload.js"></script>

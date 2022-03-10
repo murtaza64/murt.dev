@@ -1,19 +1,50 @@
 /* dark mode strategy from https://ryanfeigenbaum.com/dark-mode/ */
 
-:root[color-mode="dark"] {
+/* :root[color-mode="dark"] { */
+    
+/* default color scheme setup based on media query */
+:root, :root[color-mode="dark"] {
     --surface1: #222;
     --surface2: #333;
     --surface3: #444;
     --element1: #eee;
-    --element2: #ddd;
-    --element3: #ccc;
+    --element2: #ccc;
+    --element3: #aaa;
     --elementInverse: #111;
     --primary: #ffade7;
+    --primary-active: #ffd7f3;
     --secondary: #91E6F3;
+    --secondary-active: #cbf6fd;
     --tertiary: #eee8a9;
 }
 
-:root[color-mode="light"] {
+@media (prefers-color-scheme: light) {
+    :root {
+        --surface1: #e0e0e0;
+        --surface2: #f0f0f0;
+        --surface3: #fff;
+        --element1: #111;
+        --element2: #333;
+        --element3: #666;
+        --elementInverse: #eee;
+        --primary: #b94c99;
+        --primary-active: #df7cc1;
+        --secondary: #1aa0b4;
+        --secondary-active: #69cfdf;
+        --tertiary: #9e9210;
+    }
+}
+
+.js-disabled-hide {
+    display: none;
+}
+:root[js="true"] .js-disabled-hide {
+    display: auto;
+}
+
+/* toggle (only when js is enabled) */
+
+:root[js="true"][color-mode="light"] {
     --surface1: #e0e0e0;
     --surface2: #f0f0f0;
     --surface3: #fff;
@@ -22,15 +53,26 @@
     --element3: #666;
     --elementInverse: #eee;
     --primary: #b94c99;
+    --primary-active: #df7cc1;
     --secondary: #1aa0b4;
+    --secondary-active: #69cfdf;
     --tertiary: #9e9210;
 }
-:root[color-mode="dark"] .dark-hide {
+
+:root[js="true"][color-mode="light"] .dark-hide {
+    display: inline;
+}
+:root[js="true"][color-mode="light"] .light-hide {
     display: none;
 }
-:root[color-mode="light"] .light-hide {
+:root[js="true"][color-mode="dark"] .light-hide {
+    display: inline;
+}
+:root[js="true"][color-mode="dark"] .dark-hide {
     display: none;
 }
+
+
 
 
 html {
@@ -40,14 +82,18 @@ body {
     margin: 0;
     min-height: 100%;
     background-color: var(--surface1);
-    font-family: "Hack NF";
+    font-family: "Roboto", sans-serif;
     color: var(--element1);
     padding: 8px;
+    line-height: 125%;
 }
 a {
-    color: var(--primary);
+    color: var(--secondary);
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;
+    text-decoration-thickness: 1px;
+}
+a:active {
+    color: var(--secondary-active);
 }
 button {
     background-color: var(--surface2);
@@ -63,7 +109,7 @@ button:active {
 }
 #content {
     margin: auto;
-    width: 600px;
+    max-width: 600px;
 }
 .js-disabled-hide {
     display: none;
@@ -80,10 +126,99 @@ button:active {
     color: var(--tertiary);
 }
 
+.surface-1 {
+    background-color: var(--surface1);
+}
+
 .surface-2 {
     background-color: var(--surface2);
 }
 
 .surface-3 {
     background-color: var(--surface3);
+}
+
+
+.panel.surface-2, .panel.surface-3 {
+    padding: 8px;
+}
+
+.flex-panel {
+    display: flex;
+    align-items: flex-start;
+}
+
+.flex-panel div {
+    margin: 0 16px;
+}
+
+@media (max-width: 800px) {
+    .flex-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+    .flex-panel div {
+        margin: 16px 0;
+    }
+}
+
+/* .panel {
+    display: flex;
+    align-items: center;
+} */
+
+h2 {
+   margin: 0 0 8px 0; 
+   color: var(--primary);
+}
+
+ul.flat-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ul.flat-list li{
+    background-color: var(--surface2);
+    display: inline;
+    margin: 8px 8px;
+    padding: 4px 8px;
+}
+
+ul.flat-list a li {
+    display: block;
+}
+
+ul.flat-list a{
+    text-decoration: none;
+}
+.inline-icon {
+    width: 1em;
+}
+
+ul.flat-list.dictionary li {
+    padding: 0;
+    background-color: var(--surface2);
+}
+
+ul.flat-list.dictionary li div.key,
+ul.flat-list.dictionary li div.val  {
+    display: inline;
+    padding: 4px 8px;
+}
+
+ul.flat-list.dictionary li div.key {
+    color: var(--element3);
+    background-color: var(--surface3);
+}
+ul.flat-list.dictionary li div.val {
+    background-color: var(--surface2);
+}
+
+#profile-pic {
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--secondary)
 }
